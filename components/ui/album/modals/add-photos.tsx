@@ -107,6 +107,7 @@ export function AddPhotosModal({
             const uploadedPhotos = await Promise.all(uploadPromises);
 
             // Save photo metadata by calling the /api/photos endpoint.
+            console.log(uploadedPhotos)
             const metaResponse = await fetch("/api/photos", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },

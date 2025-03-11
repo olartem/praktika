@@ -15,7 +15,6 @@ export async function POST(request: Request) {
     if (!photosArray || !Array.isArray(photosArray) || photosArray.length === 0) {
         return NextResponse.json({ error: "No photos provided" }, { status: 400 });
     }
-
     try {
         // Insert all photos with a single query using the helper.
         const insertedPhotos = await insertPhotos(userId, photosArray);

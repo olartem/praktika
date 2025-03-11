@@ -20,7 +20,7 @@ export default function MyAlbumPage() {
                 console.error("Error fetching album data:", error);
                 setLoading(false);
             });
-    });
+    }, []);
 
     if (loading) return <TableSkeleton />;
 

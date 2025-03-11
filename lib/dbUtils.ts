@@ -147,10 +147,20 @@ export async function insertPhotos(
     userId: string,
     photosArray: PhotoInput[]
 ) {
+    // If any photo has folder_id equal to an empty string, fetch the user's root folder.
+    let rootFolderId: string;
+    if (photosArray.some(photo => photo.folder_id === "")) {
+        const rootFolder = await getRootFolder(userId);
+        if (!rootFolder) {
+            throw new Error("User root folder not found");
+        }
+        rootFolderId = rootFolder.id;
+    }
+
     const photosToInsert = photosArray.map((photo) => ({
         id: uuidv4(),
         owner_id: userId,
-        folder_id: photo.folder_id,
+        folder_id: photo.folder_id === "" ? rootFolderId : photo.folder_id,
         name: photo.name,
         s3_key: photo.s3_key,
         share_token: null,
@@ -164,6 +174,7 @@ export async function insertPhotos(
 
     return insertedPhotos;
 }
+
 
 export async function getUsers(userIds: string []) {
     return db
