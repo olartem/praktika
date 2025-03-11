@@ -189,7 +189,7 @@ export default function Home() {
                 no credit card required.
               </p>
               <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg">
-                <Link href="/sign-in"></Link>
+                <Link href="/sign-in">Create your account</Link>
               </Button>
             </div>
           </section>
