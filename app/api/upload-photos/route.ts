@@ -12,8 +12,9 @@ export async function POST(request: Request) {
     try {
         const { uploadUrl, key } = await getPresignedUploadUrl(fileName, fileType);
         return NextResponse.json({ uploadUrl, key });
-    } catch (error: any) {
-        console.error("Error generating presigned URL:", error);
-        return NextResponse.json({ error: "Failed to generate upload URL" }, { status: 500 });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return NextResponse.json({ error: error.message }, { status: 500 });
+        }
     }
 }

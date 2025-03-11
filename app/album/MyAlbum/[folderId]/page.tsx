@@ -1,8 +1,7 @@
 "use client"
 
 import {useState, useEffect, use} from "react"
-import { useRouter } from "next/navigation"
-import {type Item, type Folder, FolderData, FolderProvider, useFolder,} from "@/components/ui/album/folder-provider"
+import { FolderData, useFolder,} from "@/components/ui/album/folder-provider"
 import {TableSkeleton} from "@/components/ui/album/table-skeleton";
 import {FolderView} from "@/components/ui/album/folder-view";
 
@@ -23,7 +22,7 @@ export default function MyAlbumFolderPage({ params }: { params: Promise<{ folder
                 console.error("Error fetching album data:", error);
                 setLoading(false);
             });
-    }, []);
+    });
 
     if (loading) return <TableSkeleton />;
 

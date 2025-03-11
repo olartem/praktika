@@ -2,7 +2,6 @@ import Link from "next/link"
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Camera, ImageIcon, Share2, Upload } from "lucide-react"
-import {SignedIn, SignedOut, SignInButton, SignUpButton, UserButton} from "@clerk/nextjs";
 
 export default function Home() {
   return (
@@ -142,8 +141,8 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-muted-foreground">
-                    "PhotoVault has completely transformed how I manage my client portfolios. The organization features
-                    are incredible."
+                    &ldquo;PhotoVault has completely transformed how I manage my client portfolios. The organization features
+                    are incredible.&ldquo;
                   </p>
                 </div>
                 <div className="bg-background p-8 rounded-xl">
@@ -157,9 +156,9 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-muted-foreground">
-                    "I love how easy it is to share my travel albums with family while keeping everything private from
+                    &ldquo;I love how easy it is to share my travel albums with family while keeping everything private from
                     the
-                    public."
+                    public.&ldquo;
                   </p>
                 </div>
                 <div className="bg-background p-8 rounded-xl">
@@ -173,8 +172,8 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-muted-foreground">
-                    "Our family photos spanning decades are now organized and accessible to everyone in the family. It's
-                    priceless."
+                    &ldquo;Our family photos spanning decades are now organized and accessible to everyone in the family. It&apos;s
+                    priceless.&ldquo;
                   </p>
                 </div>
               </div>
@@ -189,8 +188,8 @@ export default function Home() {
                 Join thousands of photographers who trust PhotoVault with their precious memories. Get started for free,
                 no credit card required.
               </p>
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg">
-                Create Your Free Account
+              <Button asChild className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg">
+                <Link href="/sign-in"></Link>
               </Button>
             </div>
           </section>

@@ -16,8 +16,6 @@ import {
 } from "@/components/ui/sidebar"
 import { useModals } from "@/components/ui/album/modal-provider"
 
-import {Folder} from "@/components/ui/album/folder-provider";
-
 export function Sidebar() {
     const pathname = usePathname()
     const { openAddFolder, openAddPhotos } = useModals()

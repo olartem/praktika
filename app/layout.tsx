@@ -1,17 +1,8 @@
 import { type Metadata } from 'next'
-import { dark } from '@clerk/themes'
 import {
     ClerkProvider,
-    SignInButton,
-    SignUpButton,
-    SignedIn,
-    SignedOut,
-    UserButton,
 } from '@clerk/nextjs'
 import './globals.css'
-import {Camera} from "lucide-react";
-import Link from "next/link";
-import {Button} from "@/components/ui/button";
 
 import { Inter } from "next/font/google"
 import BlockContextMenu from "@/components/blockContextMenu";

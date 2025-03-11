@@ -5,8 +5,8 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Modal } from "@/components/ui/album/modals/modal"
-import {FolderData, Item, useFolder} from "@/components/ui/album/folder-provider";
-import {redirect, useRouter} from "next/navigation";
+import { Item, useFolder} from "@/components/ui/album/folder-provider";
+import { useRouter} from "next/navigation";
 
 export function AddFolderModal({
                                    isOpen,

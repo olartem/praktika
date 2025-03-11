@@ -125,7 +125,7 @@ export function AddPhotosModal({
                     ...newPhotos.map((photo: any) => ({ type: "photo" as const, ...photo })),
                 ],
             });
-        } catch (error) {
+        } catch (error: unknown) {
             console.error("Error uploading photos:", error);
         } finally {
             onClose();
@@ -178,9 +178,11 @@ export function AddPhotosModal({
                             {files.map((file) => (
                                 <div key={file.id} className="flex items-center gap-2 p-2 border-b last:border-b-0">
                                 <div className="w-10 h-10 bg-muted rounded-lg flex-shrink-0 overflow-hidden">
-                                        <img
+                                        <Image
                                             src={file.preview || "/placeholder.svg"}
-                                            alt=""
+                                            width={40}
+                                            height={40}
+                                            alt={file.name}
                                             className="w-full h-full object-cover"
                                         />
                                     </div>

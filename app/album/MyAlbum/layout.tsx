@@ -1,8 +1,8 @@
 "use client"
 import {Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbSeparator} from "@/components/ui/breadcrumb"
 import Link from "next/link"
-import {ChevronRight, FolderOpen} from "lucide-react"
-import React, {ReactNode, useEffect, useState} from "react"
+import { FolderOpen} from "lucide-react"
+import React, {ReactNode} from "react"
 import {useFolder} from "@/components/ui/album/folder-provider";
 
 export interface BreadcrumbItemType {

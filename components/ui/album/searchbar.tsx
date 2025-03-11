@@ -109,7 +109,7 @@ export function SearchBar() {
                         </div>
                     ) : noResults ? (
                         <div className="p-4 text-center text-muted-foreground">
-                            No results found for "{query}"
+                            No results found for &quot;{query}&quot;
                         </div>
                     ) : (
                         <div className="max-h-[300px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-400 scrollbar-track-transparent">

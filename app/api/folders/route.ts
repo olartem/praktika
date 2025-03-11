@@ -4,8 +4,7 @@ import {
     createNewFolder,
     createNewUser,
     getChildFolders,
-    getFolderById,
-    getFolderPhotos, getFolders,
+    getFolderPhotos,
     getRootFolder,
     getUser
 } from "@/lib/dbUtils";
@@ -19,22 +18,22 @@ export async function POST(request: Request) {
 
     // Expect JSON body: { name: string, parent_id?: string }
     const body = await request.json();
-    let { name, parent_id } = body;
+    const { name, parent_id } = body;
     if (!name) {
         return NextResponse.json({ error: "Missing folder name" }, { status: 400 });
     }
-
+    let id = parent_id;
     if(parent_id === "") {
-        parent_id = await getRootFolder(userId).then((folder) => {return folder.id});
+        id = await getRootFolder(userId).then((folder) => {return folder.id});
     }
 
-    const newFolder = await createNewFolder(userId, name, parent_id);
+    const newFolder = await createNewFolder(userId, name, id);
     console.log(newFolder);
 
     return NextResponse.json(newFolder);
 }
 
-export async function GET(request: Request) {
+export async function GET() {
     const { userId, redirectToSignIn } = await auth();
     if (!userId) return redirectToSignIn();
 

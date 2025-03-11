@@ -49,7 +49,7 @@ export function ShareModal({ isOpen, onClose, item }: ShareModalProps) {
                     <h2 className="text-xl font-semibold">Share {item.type === "folder" ? "Folder" : "Photo"}</h2>
                 </div>
 
-                <p className="text-muted-foreground mb-6">Share "{item.name}" with others by sending them a link or email.</p>
+                <p className="text-muted-foreground mb-6">Share &quot;{item.name}&quot; with others by sending them a link or email.</p>
 
                 <div className="space-y-6">
                     <div className="space-y-2">

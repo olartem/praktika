@@ -2,7 +2,7 @@
 
 import type React from "react"
 
-import { useState, useEffect, createContext, useContext } from "react"
+import { useState, createContext, useContext } from "react"
 import { AddFolderModal } from "@/components/ui/album/modals/add-folder"
 import { AddPhotosModal } from "@/components/ui/album/modals/add-photos"
 import { EditItemModal } from "@/components/ui/album/modals/edit-item"
