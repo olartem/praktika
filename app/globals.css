@@ -1,0 +1,185 @@
+@import "tailwindcss";
+
+@plugin 'tailwindcss-animate';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.145 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.145 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.985 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.396 0.141 25.723);
+  --destructive-foreground: oklch(0.637 0.237 25.331);
+  --border: oklch(0.269 0 0);
+  --input: oklch(0.269 0 0);
+  --ring: oklch(0.439 0 0);
+  --radius: 1rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Make sure the table takes full height */
+.folder-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.folder-container > div {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Add dialog backdrop fix to make sure there are no stray transparent elements */
+[data-state="closed"][data-backdrop],
+[data-state="closed"] [role="dialog"] {
+  pointer-events: none !important;
+  opacity: 0 !important;
+}
+
+/* Add custom pointer-events rule to fix modal backdrop issue */
+.dialog-backdrop-fix {
+  pointer-events: none !important;
+}
+.dialog-backdrop-fix * {
+  pointer-events: auto !important;
+}
+
+/* Update the drag and drop animation styles to make them more visible */
+@keyframes pulse-border {
+  0% {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.3);
+  }
+  50% {
+    border-color: hsl(var(--primary) / 0.8);
+    box-shadow: 0 0 0 3px hsl(var(--primary) / 0.2);
+  }
+  100% {
+    border-color: hsl(var(--primary) / 0.3);
+    box-shadow: 0 0 0 0 hsl(var(--primary) / 0.3);
+  }
+}
+
+/* Add specific styles for folder drag and drop */
+.dragging-over-folder {
+  animation: pulse-border 1.5s infinite;
+  border: 2px dashed hsl(var(--primary)) !important;
+  background-color: hsl(var(--primary) / 0.1) !important;
+  position: relative;
+  z-index: 10;
+}
+
+/* Make folder rows show distinct animation when dragging over */
+tr.dragging-over-folder td {
+  background-color: hsl(var(--primary) / 0.1) !important;
+}
+
+/* Make the regular dragging-over effect more subtle */
+.dragging-over {
+  animation: pulse-border 1.5s infinite;
+  border: 2px dashed hsl(var(--muted-foreground) / 0.5) !important;
+  background-color: hsl(var(--muted) / 0.1) !important;
+  position: relative;
+  z-index: 10;
+}
+
+tr.dragging-over td {
+  background-color: hsl(var(--muted) / 0.1) !important;
+}
+
+/* Make table rows show animation when dragging over */
+/* tr.dragging-over td {
+  background-color: hsl(var(--primary) / 0.05) !important;
+} */
+
+/* Make the table look cleaner with only row separators */
+.table-container {
+  border: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Ensure table rows have proper separators */
+tbody tr {
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+tbody tr:last-child {
+  border-bottom: none;
+}
+
+/* Custom scrollbar styles */
+.scrollbar-thin {
+  scrollbar-width: thin;
+}
+
+.scrollbar-thumb-gray-400 {
+  scrollbar-color: hsl(var(--muted-foreground)) transparent;
+}
+
+.scrollbar-track-transparent {
+  scrollbar-track-color: transparent;
+}
+
+/* For Webkit browsers */
+.scrollbar-thin::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.scrollbar-thumb-gray-400::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--muted-foreground));
+  border-radius: 3px;
+}
+
+.scrollbar-track-transparent::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
